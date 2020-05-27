@@ -1,6 +1,6 @@
 <h1 align="center"> rssh </h1>
 
-> **If you find a bug or have a good idea make a issue or a pull request**
+> ### If you find a bug or have a good idea make a issue or a pull request
 
 ## What is this
 rssh is a Python 3 library, with ssh server/client. It's multithreaded and uses RSA 4096 bits (By default).
