@@ -25,7 +25,17 @@ class Rsa:
                 self.encryptor = PKCS1_OAEP.new(self.public)
 
     def encrypt(self,text):
-        return self.encryptor.encrypt(text.encode('utf8'))
+        if self.public:
+            if len(text) <= 4096:
+                return self.encryptor.encrypt(text.encode('utf8'))
+            else:
+                data = ''
+                data += self.encryptor.encrypt(text[:4096].encode('utf8'))
+                data += self.encryptor.encrypt(text[4096:].encode('utf8'))
+
+                return data
+        else:
+            return False
 
     def decrypt(self,text):
         if self.private:

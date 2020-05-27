@@ -3,6 +3,7 @@ from time import sleep
 from threading import Thread
 from . import rsa
 
+
 class error(Exception):
     pass
 
@@ -90,6 +91,7 @@ class HandleClient:
         self.handle_keys()
 
         user, passwd = self.server_key.decrypt(self.conn.recv(8192)).split("&")
+        
         try:
             validate = self.validate_user_passwd(user,passwd)
 
@@ -98,7 +100,6 @@ class HandleClient:
             if "error" in validate:
                 self.conn.close()
                 return False
-
         except error as err:
             print(err)
             self.conn.sendall(self.client_key.encrypt("error:Unknown Error"))
@@ -109,16 +110,19 @@ class HandleClient:
             try:
                 original = self.server_key.decrypt(self.conn.recv(8192))
                 
-                command = ["echo",f"{passwd}","|","su","-l",f"{user}",'-c']
-                command += original.split()
+                # command = ["echo",f"{passwd}","|","su","-l",f"{user}",'-c']
+                # command += original.split()
                 
-                cmd = f'{{ sleep 1; echo "{passwd}"; }} | script -q -c "su -l {user} -c {original}" /dev/null'
+                cmd = f'''{{ sleep 1; echo "{passwd}"; }} | script -q -c "su -l {user} -c '{original}'" /dev/null'''
 
                 self.proc = subprocess.Popen(cmd,stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE,shell=True)
 
                 data, derr = self.proc.communicate()
 
-                self.conn.sendall(self.client_key.encrypt(str(data.decode()+derr.decode())))
+                if not data.decode() and not derr.decode():
+                    self.conn.sendall("RSSH:empty")
+                else:
+                    self.conn.sendall(self.client_key.encrypt(str(data.decode()+derr.decode())))
 
             except Exception as err:
                 print(err)

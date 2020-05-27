@@ -44,15 +44,13 @@ class SSHClient:
 
     def send(self,text):
         try:
-            sleep(0.2)
             if not text:
                 self.sock.sendall(self.server_key.encrypt("\n"))
             else:
                 self.sock.sendall(self.server_key.encrypt(text))
 
-            sleep(5)
-
             recv = self.recv()
+            
             if recv:
                 return recv
             else:

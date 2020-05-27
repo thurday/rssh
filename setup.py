@@ -8,7 +8,7 @@ with open("requirements.txt","r") as fh:
 
 setuptools.setup(
     name="rssh",
-    version="1.0",
+    version="1.1",
     author="Arthur Oliveira",
     author_email="fantasmahacking7@gmail.com",
     description="A SSH(Secure Shell) server/client library",
@@ -17,6 +17,7 @@ setuptools.setup(
     url="https://github.com/ReddyyZ/rssh",
     packages=setuptools.find_packages(),
     install_requires=requirements,
+    license="MIT",
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
