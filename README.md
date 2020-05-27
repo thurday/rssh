@@ -16,7 +16,7 @@ rssh is a Python 3 library, with ssh server/client. It's multithreaded and uses 
     - Mac :question:
 
 ## How to install
-On terminal type: ```python3 -m pip install rssh ```
+On terminal type: ```python3 -m pip install rssh ```                                                                                      
 And test, open python3 and type: ```import rssh```
 
 ## License
