@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.0.0] - 2020-05-27
+## [1.1] - 2020-05-27
 ### Added
 ### Classes
 ### SSH Server
@@ -65,3 +65,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
         - None
     - Function
         - Kill the connection
+
+## [1.1] - 2020-05-27
+### Modified
+I made some bugfixes and some improvements.
