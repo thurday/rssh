@@ -9,6 +9,7 @@ def start():
 
     ssh = rssh.SSHServer('127.0.0.1')
     print('Key generated')
+    
     ssh.start()
     print('Server started')
 
@@ -19,9 +20,9 @@ while True:
     option = int(input('-> '))
     if option == 1:
         for i in ssh.clients:
-            print(ssh.clients[i])
+            print(ssh.clients[i].addr[0])
     elif option == 2:
-        ip = str(input('-> '))
-        ssh.clients[ip].kill()
+        ip = str(input('IP -> '))
+        ssh.kill(ip)
     else:
         print('Invalid option')
