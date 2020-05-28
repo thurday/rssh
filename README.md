@@ -5,7 +5,7 @@
 ## See [examples](https://github.com/ReddyyZ/rssh/tree/master/examples) to get help.
 
 ## What is this
-rssh is a Python 3 library, with ssh server/client. It's multithreaded and uses RSA 4096 bits (By default).
+rssh is a Python 3 library, with SSH server/client. It's multithreaded and uses RSA 4096 bits (By default).
 
 ## OS Support
 - SSH Client
